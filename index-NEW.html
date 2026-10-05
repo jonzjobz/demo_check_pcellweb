@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!--
+ ======================================================================
+  PROJECT CELL — index.html  (page structure only; look = style.css, behaviour = script.js)
+  COLOUR PALETTE (only these): #081F2D navy · #2e59bf blue · #ded9d2 stone · #f4f5ff mist · #070707 black
+
+  IMAGE FILES — make a folder called "img" next to this file and save pictures with EXACTLY these names.
+  If a file is missing, the site just shows the built-in placeholder, so you can add them one by one.
+    img/logo.png or logo.svg (have made svg fallback that works)                  CLUB LOGO (square, transparent PNG). Used in: navbar, loading screen, contact block, browser tab.
+    img/people/PC-CO01.jpg ...      TEAM PHOTOS (square or 3:4 portrait). Name = PC-<TEAM><NUMBER>, numbered in the order the roles appear:
+        PC-CO01 President · PC-CO02 Vice President · PC-CO03 Operational Lead              (Core team: CO01-CO03)
+        PC-CR01 Design Lead · CR02 Design Co-Lead · CR03-04 Media Managers · CR05 Treasurer · CR06 Marketing · CR07 Documentation (Creative: CR01-CR07)
+        PC-TE01 Tech Lead · TE02 Tech Co-Lead · TE03 IOT Lead · TE04-TE10 Tech Associates  (Technical: TE01-TE10)
+        PC-SA01 ... PC-SA04                                                                 (Senior advisors)
+        PC-JA01 ... PC-JA08                                                                 (Junior advisors)
+    img/projects/project-1.jpg ... project-5.jpg     PROJECT PICTURES (landscape)
+    img/gallery/gallery-01.jpg ... gallery-07.jpg    "THE WALL" PHOTOS
+  Change names/teams in script.js (list G = teams, PJ = projects). Text placeholders look like [THIS].
+ ======================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Project Cell — CRCE</title>
+<link rel="icon" href="img/logo.png"><!-- browser-tab icon: img/logo.png -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Archivo:wght@400;600&family=Chakra+Petch:wght@700&family=VT323&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="boot">
+<!-- ===== LOADING SCREEN (#boot): retro computer shown before the site; animated by script.js "boot" + "loader motion graphics" ===== -->
+<div id="boot" aria-hidden="true"><div class="h h1"></div><div class="h h2"></div><div class="scan"></div>
+<div class="c"><div class="pcm"><div class="mon"><div class="bz"><div class="scrn"><img class="limg" src="img/logo.svg" alt="pcell logo" onerror="this.remove()"><!-- LOGO: img/logo.png (shown on loading screen); svg below is the fallback --><svg viewBox="0 0 100 100" style="width:3rem;color:#ded9d2;margin-bottom:.5rem" aria-hidden="true"><use href="#mk"/></svg><div class="m" style="color:var(--mut)">System initialization</div><div class="t">PROJECT CELL</div><br>
+<div id="bl"></div><div class="seg" id="sg"></div><div class="m"><span id="pc">[ 000% ]</span> <span class="caret"></span></div></div></div><div class="pl2"><span class="m">CELL-1</span><i></i></div></div><div class="neck"></div><div class="base"></div><div class="kbd"></div></div></div></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"> 
+  <symbol id="mk" viewBox="0 0 100 100"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="9.5"
+          stroke-linecap="square"
+          stroke-linejoin="square">
+
+    <circle cx="25" cy="25" r="11"/>             /*this our logo svg, used in navbar and contact block*/
+    <circle cx="75" cy="25" r="11"/>
+    <circle cx="25" cy="75" r="11"/>
+    <circle cx="75" cy="75" r="11"/>
+
+    <path d="M33 33L67 67"/>
+
+    <path d="M83 17L94 6"/>
+    <path d="M17 83L6 94"/>
+    
+
+  </symbol>
+</svg>
+
+<div id="rl"></div>
+<div id="sh"></div>
+<div id="cur"></div>
+<!-- ===== NAVBAR (#nav): logo + menu button; links (#ml) are generated in script.js ===== -->
+<nav id="nav" aria-label="Primary">
+<a class="logo" href="#home" data-go><!-- NAVBAR LOGO: img/logo.png (falls back to the built-in svg mark) --><img class="limg" src="img/logo.png" alt="pcell logo" onerror="this.remove()"><svg viewBox="0 0 100 100" data-rot=".3" aria-hidden="true"><use href="#mk"/></svg><span>PROJECT CELL</span></a>
+<button class="sw" aria-expanded="false" aria-controls="ml">MENU <s></s></button>
+<ul id="ml"></ul></nav>
+<!-- ===== MAIN CONTENT: each <section> below is one part of the page ===== -->
+<main>
+<!-- ===== HERO (#home): big PROJECT CELL title that splits apart on scroll ===== -->
+<section id="home" class="hero" aria-label="Home"><div class="stick" id="st">
+<svg class="gm" data-rot="-.12" data-speed="-.15" viewBox="0 0 100 100" aria-hidden="true"><use href="#mk"/></svg><div class="gauge" id="gg" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" class="gb"/><circle cx="50" cy="50" r="36" class="gt"/><g id="nd" style="transform-origin:50px 50px"><path d="M50 50V18" class="gn"/></g><circle cx="50" cy="50" r="6" class="gc"/></svg><div class="leds" id="ld"></div></div>
+<div class="hud m" data-sp="-.5"><b>SYSTEM / 01</b></div>
+
+<h1 aria-label="Project Cell"><span class="w a" id="wa"><span>Project</span></span><span class="w b" id="wb"><span>Cell</span></span></h1>
+<p class="tag m" id="tg">Technology + design + experimentation</p>
+<div class="cue m" aria-hidden="true">Scroll<i></i></div><!-- scroll hint --><div class="wipe" id="wp"></div><!-- colour sheet that rises as you scroll --></div></section>
+<!-- ===== INTRO TEXT (#intro): words light up while scrolling (#it) ===== -->
+<section id="intro" class="sec" style="padding-block:clamp(4rem,10vw,8rem)"><p class="it" id="it"></p></section>
+<!-- ===== GAME CONSOLE (#hw): handheld "CELL-1" that plays SNAKE. Logic is in script.js (search "GAME CONSOLE"). =====
+     Left: score (#sd), best (#bs), knob (#kb), lamps (#l1 power, #l2 flashes on apple), power switch (#sw2)
+     Centre: screen (canvas #cv) + status line (#gs)   ·   Right: D-pad (arrows) + START/PAUSE (#ba) + RESET (#bb)
+     Controls: D-pad, arrow keys / WASD, or swipe on the screen. -->
+<section id="hw" class="sec" aria-label="Snake game console" style="padding-block:clamp(2rem,6vw,5rem)"><div class="dev" data-r><b class="sc"></b><b class="sc"></b><b class="sc"></b>
+<div class="lc"><span class="m">Cell / 01</span>
+<div class="hs"><span class="m">Score</span><div class="seg2 m" id="sd">000</div></div>
+<div class="hs"><span class="m">Best</span><div class="seg2 m" id="bs">000</div></div>
+<div class="kw2"><div id="kb" class="kn2" aria-hidden="true"></div></div>
+<div class="pwr"><div class="lamps"><div class="lamp" id="l1"></div><div class="lamp b" id="l2"></div></div>
+<div class="sw3"><span class="m">Off</span><button class="tg" id="sw2" aria-pressed="false" aria-label="Power"><i></i></button><span class="m">On</span></div></div></div>
+<div class="scr3"><div class="bz2 off"><canvas id="cv" width="400" height="400" role="img" aria-label="Snake game screen"></canvas></div><div class="m" id="gs" aria-live="polite">Switch power on</div></div>
+<div class="rc"><div class="dp" role="group" aria-label="Direction pad"><button data-d="u" aria-label="Up">&#9650;</button><button data-d="l" aria-label="Left">&#9664;</button><div></div><button data-d="r" aria-label="Right">&#9654;</button><button data-d="d" aria-label="Down">&#9660;</button></div>
+<div class="ab2"><button id="ba" aria-label="Start or pause">START</button><button id="bb" aria-label="Reset game">RESET</button></div>
+<div class="grille" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div></div></section><div class="mq" aria-hidden="true" data-dir="-1"><div></div></div>
+
+<!-- ===== ABOUT (#about): headline, keyword box, mission box, build log, values list (#pr), stats ===== -->
+<section id="about" class="sec" aria-labelledby="ah"><div class="bgm" data-rot="-.1" data-speed="-.12" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#mk"/></svg></div><div class="ab">
+<div class="l m"><span>01 / Who we are</span><span>Project Cell</span></div>
+<h2 id="ah" data-r><span>Students</span><span>who build.</span><span>On purpose.</span></h2>
+<div class="roll" data-r aria-hidden="true"><span>We</span><div class="rw"><div id="rl2"><span>learn.</span><span>experiment.</span><span>build.</span><span>share.</span></div></div></div><div class="ring" data-r><svg viewBox="0 0 200 200" role="img" aria-label="Cycle: learn, build, test, share"><g id="rg" style="transform-origin:100px 100px"><circle cx="100" cy="100" r="78" fill="none" stroke="#081F2D" stroke-width="3" stroke-dasharray="2 7"/>
+<g fill="#081F2D"><rect x="92" y="14" width="16" height="16"/><rect x="170" y="92" width="16" height="16"/><rect x="92" y="170" width="16" height="16"/><rect x="14" y="92" width="16" height="16"/></g></g>
+<circle cx="100" cy="100" r="26" fill="#081F2D"/><text x="100" y="106" text-anchor="middle" fill="#2e59bf" font-family="VT323,monospace" font-size="22">CELL</text></svg></div>
+<!-- ABOUT CARD: the .kw words are clickable; script.js shows their meaning in #kr (edit KD in script.js) -->
+<div class="p" data-r><div class="m ph2"><span>About us</span><span>Click a keyword</span></div><p>Project Cell is a dynamic student-led technology club dedicated to fostering <span class="kw" role="button" tabindex="0">innovation</span>, <span class="kw" role="button" tabindex="0">creativity</span>, and <span class="kw" role="button" tabindex="0">technical excellence</span>.</p><p>We bring together passionate minds to explore cutting-edge technologies and build <span class="kw" role="button" tabindex="0">solutions that matter</span>.</p><div class="kr m" id="kr" aria-live="polite">&gt; Select a keyword to decode it_</div></div>
+<!-- MISSION BOX: two buttons switch the typed text in #ms (edit MS in script.js) -->
+<div class="con" data-r><div class="m">Our mission</div><p class="scr2" id="ms" aria-live="polite"></p><div class="kk" role="group" aria-label="Mission"><button data-m="0" aria-pressed="true">Collaborate</button><button data-m="1" aria-pressed="false">Learn by doing</button></div></div>
+
+<!-- VALUES LIST: filled by script.js (#pr) and followed by the stats counters (#stt) -->
+<div class="pr" id="pr"></div>
+</div></section>
+
+<!-- ===== TEAM (#team): header block (.thead) + folders built from the list in script.js (#tm) ===== -->
+<section id="team" class="sec team" aria-labelledby="th"><div class="m">02 / Personnel archive</div>
+<div id="tm"></div>
+<div class="front"><div class="sf">Meet the <b>people</b> behind</div><h2 class="big" id="th">The team</h2></div></section>
+
+
+<!-- ===== PROJECTS (#projects): horizontal scroll cards built in script.js (#trk) ===== -->
+<section id="projects" class="hz" aria-label="Projects"><div class="stick" id="hs">
+<div class="m" style="position:absolute;top:3.80rem;right:clamp(1rem,4vw,3rem);z-index:2;color:var(--mut)">02 / Project archive — keep scrolling</div>
+<div class="trk" id="trk"></div><div class="pb" id="pb"></div></div></section>
+
+<!-- ===== EVENTS (#events): upcoming cards (#up) + archive list (#ps) ===== -->
+<section id="events" class="sec" aria-labelledby="eh"><div class="m">03 / Notice board</div>
+<h2 id="eh" data-r style="margin-top:1rem">Events</h2>
+<div id="up"></div><div class="past" id="ps"><div class="m" style="margin-bottom:.6rem"></div></div></section>
+
+<div class="mq" aria-hidden="true" data-dir="1"><div></div></div><!-- ===== GALLERY (#gallery): "The wall" photo prints (#wl) ===== -->
+<section id="gallery" class="sec" aria-labelledby="gh"><div class="gh"><h2 id="gh" data-r>The wall</h2><div class="m" id="gl">04 / Hover a print</div></div><div class="wall" id="wl"></div></section>
+
+<!-- ===== CONTACT (#contact): heading, logo block (#b3), social keys, footer ===== -->
+<section id="contact" class="sec" aria-labelledby="ch"><div class="m">05 / Communication module</div>
+<div class="chead"><div><h2 id="ch" data-r style="margin-top:1rem"><span>Connect to</span><span>Project Cell</span></h2>
+<div class="sig m"><i></i> Channel open</div>
+<p class="cl">Ready to join our community or have a project idea? We'd love to hear from you!</p></div>
+<div class="big3" id="b3" title="Click me"><!-- CONTACT LOGO: img/logo.png --><img class="limg" src="img/logo.svg" alt="" onerror="this.remove()"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#mk"/></svg><div>PROJECT<br>CELL</div></div></div>
+<div class="m kl">Pick a channel</div>
+<!-- SOCIAL KEYS: replace href="#" with your real links and the [HANDLE]/[PAGE]/[ADDRESS] text -->
+<div class="keys">
+<a class="key" href="https://www.instagram.com/project_cell.crce" aria-label="Instagram"><i></i><span class="cap">Instagram <small></small></span></a>
+<a class="key" href="#" aria-label="LinkedIn"><i></i><span class="cap">LinkedIn <small>[PAGE]</small></span></a>
+<a class="key" href="#" aria-label="Email"><i></i><span class="cap">Email <small>[ADDRESS]</small></span></a></div>
+<div class="foot m"><span>Fr. Conceicao Rodrigues College of Engineering</span><span>Bandra, Mumbai</span><span>Project Cell / CRCE</span></div>
+<div class="credit">
+  Made by
+  <a href="https://instagram.com/drawer_meh" target="_blank" rel="noopener">Riddhi</a>
+  &
+  <a href="https://www.instagram.com/jonz_joby" target="_blank" rel="noopener">Jonaly</a>
+</div></section>
+
+</main>
+<!-- ===== JAVASCRIPT: all behaviour lives in script.js ===== -->
+<script src="script.js"></script>
+</body>
+</html>
